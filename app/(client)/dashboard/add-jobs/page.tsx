@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
+  // FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -83,7 +83,7 @@ export default function AddJobsPage() {
                   <FormLabel>Job Category</FormLabel>
                   <FormControl>
                     {/* <Input placeholder="Type here" {...field} /> */}
-                    <CategoryComboBox />
+                    <CategoryComboBox field={field} />
                   </FormControl>
 
                   <FormMessage />
@@ -98,7 +98,7 @@ export default function AddJobsPage() {
                   <FormLabel>Job Location</FormLabel>
                   <FormControl>
                     {/* <Input placeholder="Type here" {...field} /> */}
-                    <LocationComboBox />
+                    <LocationComboBox field={field} />
                   </FormControl>
 
                   <FormMessage />
@@ -113,7 +113,7 @@ export default function AddJobsPage() {
                   <FormLabel>Job Level</FormLabel>
                   <FormControl>
                     {/* <Input placeholder="Type here" {...field} /> */}
-                    <LevelComboBox />
+                    <LevelComboBox field={field} />
                   </FormControl>
 
                   <FormMessage />

@@ -13,21 +13,21 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
+// import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { MdOutlineFileDownload } from "react-icons/md";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
+// import { Checkbox } from "@/components/ui/checkbox";
+// import {
+//   DropdownMenu,
+//   DropdownMenuCheckboxItem,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
+// import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -160,7 +160,8 @@ export const columns: ColumnDef<Application>[] = [
   {
     accessorKey: "action",
     header: "Action",
-    cell: ({ row }) => (
+    // cell: ({ row }) => (
+    cell: () => (
       <div className="w-fit">
         <ActionComboBox />
       </div>

@@ -36,7 +36,7 @@ export default function MePage() {
           throw new Error(data.message || "Authentication Failed");
         }
         setUserData(data);
-      } catch (err: any) {
+      } catch (err) {
         console.error("Fetch error", err);
         setError(err.message);
         router.push("/sign-in");

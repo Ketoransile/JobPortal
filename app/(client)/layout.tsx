@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+// import { useState } from "react";
 import { MdOutlineAddToPhotos } from "react-icons/md";
 import { MdManageAccounts } from "react-icons/md";
 import { VscGitStashApply } from "react-icons/vsc";
@@ -10,7 +10,7 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [active, setActive] = useState("add-jobs");
+  // const [active, setActive] = useState("add-jobs");
   const pathname = usePathname();
   // if (pathname === "/dashboard/add-jobs") {
   //   setActive("add-jobs");

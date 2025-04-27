@@ -3,9 +3,9 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { auth, currentUser } from "@clerk/nextjs/server";
+// import { currentUser } from "@clerk/nextjs/server";
 const Navbar = async () => {
-  const user = await currentUser();
+  // const user = await currentUser();
   return (
     <div className="z-10 top-0 sticky flex items-center justify-between py-4  px-20 backdrop-blur-3xl bg-white/60 drop-shadow-xl shadow-gray-500   ">
       <Link href="/" className="flex items-center gap-2">

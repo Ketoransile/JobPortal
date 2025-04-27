@@ -13,14 +13,16 @@ export default function ApplyPage() {
             We appreciate your interest in joining our team.
           </p>
           <p className="text-base">
-            ✔ We're committed to fostering a creative, supportive, and
+            ✔ We&apos;re committed to fostering a creative, supportive, and
             innovative environment.
           </p>
           <p className="text-base">
             ✔ Your application is the first step towards an exciting and
             impactful career journey.
           </p>
-          <p className="text-base">✔ We can't wait to learn more about you!</p>
+          <p className="text-base">
+            ✔ We can&apos;t wait to learn more about you!
+          </p>
           <p className="text-base">
             Thank you for trusting us with your next big move. Together, we
             build something amazing.
