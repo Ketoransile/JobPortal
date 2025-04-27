@@ -61,7 +61,7 @@ export default function MePage() {
     <div className="flex flex-col items-start pt-20">
       <h1 className="text-4xl text-center">My profile page</h1>
       <div className="flex flex-col gap-4">
-        <h1>My Information</h1>
+        <h1>My Informations</h1>
         {userData && (
           <div className="mt-4 p-4 border border-gray-300 rounded-2xl">
             <pre>{JSON.stringify(userData, null, 2)}</pre>
