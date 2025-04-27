@@ -27,7 +27,7 @@ const Filter = () => {
         {jobCategories.map((category, index) => (
           <div className="flex items-center gap-2" key={index}>
             <Checkbox />
-            <h1 className="text-md text-gray-600">{category}</h1>
+            <h1 className="text-sm text-gray-600">{category}</h1>
           </div>
         ))}
       </div>
@@ -36,7 +36,7 @@ const Filter = () => {
         {jobLocations.map((location, index) => (
           <div className="flex items-center gap-2" key={index}>
             <Checkbox />
-            <h1 className="text-md text-gray-600">{location}</h1>
+            <h1 className="text-sm text-gray-600">{location}</h1>
           </div>
         ))}
       </div>

@@ -7,7 +7,7 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 const Navbar = async () => {
   const user = await currentUser();
   return (
-    <div className="z-10 top-0 sticky flex items-center justify-between py-4  px-20 backdrop-none  border-b border-gray-200 bg-white">
+    <div className="z-10 top-0 sticky flex items-center justify-between py-4  px-20 backdrop-blur-3xl bg-white/60 drop-shadow-xl shadow-gray-500   ">
       <Link href="/" className="flex items-center gap-2">
         <Image src="/logo.png" width={32} height={32} alt="logo-image" />
         <h1 className="text-2xl font-bold  text-black">
