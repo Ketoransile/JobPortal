@@ -36,8 +36,8 @@ const Navbar = async () => {
   return (
     <div className="z-10 top-0 sticky flex items-center justify-between py-4  px-4 lg:px-20 backdrop-blur-3xl bg-white/30 drop-shadow-xl shadow-gray-500   ">
       <Link href="/" className="flex items-center gap-2">
-        <Image src="/logo.png" width={32} height={32} alt="logo-image" />
-        <h1 className="text-2xl font-bold  text-black">
+        {/* <Image src="/logo.png" width={32} height={32} alt="logo-image" /> */}
+        <h1 className="text-lg md:text-xl lg:text-2xl font-bold  text-black">
           <span className="text-blue-600">Next</span>
           Jobs
         </h1>
@@ -46,7 +46,7 @@ const Navbar = async () => {
         {/* <ThemeToggler /> */}
         <SignedOut>
           <Link href="/recruiter/sign-up">
-            <Button className="rounded-md bg-transparent border hover:border-none border-gray-300 text-gray-500 hover:bg-gray-300 cursor-pointer">
+            <Button className="w-fit max-md:max-w-[120px] break-words whitespace-normal text-center p-2 rounded-md bg-transparent border hover:border-none border-gray-300 text-gray-500 hover:bg-gray-300 cursor-pointer py-4">
               Recruiters Signup
             </Button>
           </Link>

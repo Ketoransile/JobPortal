@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="flex items-center justify-between px-4 md:px-12 lg:px-20 pt-40 pb-10">
       <div className="flex max-md:flex-col max-md:items-start items-center gap-4">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" width={32} height={32} alt="logo-image" />
+          {/* <Image src="/logo.png" width={32} height={32} alt="logo-image" /> */}
           <h1 className="text-2xl font-bold hover:scale-110">
             <span className="text-blue-600">Next</span>
             Jobs
