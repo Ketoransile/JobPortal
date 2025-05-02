@@ -2,7 +2,7 @@ import React from "react";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { AiFillInstagram } from "react-icons/ai";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 const Footer = () => {
   return (
