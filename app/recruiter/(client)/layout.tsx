@@ -24,9 +24,9 @@ export default function DashboardLayout({
       <body>
         <div className="grid grid-cols-6 items-start pt-10 -mx-20  ">
           <div className="min-h-screen col-span-1 flex flex-col  border-r border-r-gray-300 text-sm">
-            {pathname === "/dashboard/add-jobs" ? (
+            {pathname === "/recruiter/dashboard/add-jobs" ? (
               <Link
-                href="/dashboard/add-jobs"
+                href="/recruiter/dashboard/add-jobs"
                 className="flex items-center gap-2 bg-blue-100 p-4 border-r-4 border-blue-600
             "
               >
@@ -35,7 +35,7 @@ export default function DashboardLayout({
               </Link>
             ) : (
               <Link
-                href="/dashboard/add-jobs"
+                href="/recruiter/dashboard/add-jobs"
                 className="flex items-center gap-2 p-4"
               >
                 {" "}
@@ -43,9 +43,9 @@ export default function DashboardLayout({
                 <h1>Add Job</h1>
               </Link>
             )}
-            {pathname === "/dashboard/manage-jobs" ? (
+            {pathname === "/recruiter/dashboard/manage-jobs" ? (
               <Link
-                href="/dashboard/manage-jobs"
+                href="/recruiter/dashboard/manage-jobs"
                 className="flex items-center gap-2 bg-blue-100 p-4 border-r-4 border-blue-600
             "
               >
@@ -54,7 +54,7 @@ export default function DashboardLayout({
               </Link>
             ) : (
               <Link
-                href="/dashboard//manage-jobs"
+                href="/recruiter/dashboard//manage-jobs"
                 className="flex items-center gap-2 p-4"
               >
                 {" "}
@@ -62,9 +62,9 @@ export default function DashboardLayout({
                 <h1>Manage Jobs</h1>
               </Link>
             )}
-            {pathname === "/dashboard/view-applications" ? (
+            {pathname === "/recruiter/dashboard/view-applications" ? (
               <Link
-                href="/dashboard/view-applications"
+                href="/recruiter/dashboard/view-applications"
                 className="flex items-center gap-2 bg-blue-100 p-4 border-r-4 border-blue-600
             "
               >
@@ -73,7 +73,7 @@ export default function DashboardLayout({
               </Link>
             ) : (
               <Link
-                href="/dashboard/view-applications"
+                href="/recruiter/dashboard/view-applications"
                 className="flex items-center gap-2 p-4
               "
               >

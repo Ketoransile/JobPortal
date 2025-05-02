@@ -18,21 +18,65 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
-const jobCategories = [
-  { value: "programming", label: "Programming" },
-  { value: "dataScience", label: "Data Science" },
-  { value: "designing", label: "Designing" },
-  { value: "networking", label: "Networking" },
-  { value: "management", label: "Management" },
-  { value: "marketing", label: "Marketing" },
-  { value: "cybersecurity", label: "Cybersecurity" },
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+const categories = [
+  {
+    value: "programming",
+    label: "Programming",
+  },
+  {
+    value: "dataScience",
+    label: "Data Science",
+  },
+  {
+    value: "designing",
+    label: "Designing",
+  },
+  {
+    value: "networking",
+    label: "Networking",
+  },
+  {
+    value: "management",
+    label: "Management",
+  },
+  {
+    value: "marketing",
+    label: "Marketing",
+  },
+  {
+    value: "cybersecurity",
+    label: "Cybersecurity",
+  },
 ];
 
 export function CategoryComboBox() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+  console.log("category choosen is ", value);
+  React.useEffect(() => {
+    const urlValue = searchParams.get("category");
+    if (urlValue) {
+      setValue(urlValue);
+    }
+  }, [setValue, searchParams]);
+  React.useEffect(() => {
+    const handleSelect = () => {
+      const params = new URLSearchParams(searchParams);
+      if (value) {
+        params.set("category", value);
+      } else {
+        params.delete("category");
+      }
+      // params.set("page", "1");
+      replace(`${pathname}?${params.toString()}`);
+    };
 
+    handleSelect();
+  }, [value, pathname, searchParams, replace]);
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -43,9 +87,9 @@ export function CategoryComboBox() {
           className="w-[200px] justify-between"
         >
           {value
-            ? jobCategories.find((category) => category.value === value)?.label
+            ? categories.find((category) => category.value === value)?.label
             : "Select category..."}
-          <ChevronsUpDown className="opacity-50" />
+          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
@@ -54,7 +98,7 @@ export function CategoryComboBox() {
           <CommandList>
             <CommandEmpty>No category found.</CommandEmpty>
             <CommandGroup>
-              {jobCategories.map((category) => (
+              {categories.map((category) => (
                 <CommandItem
                   key={category.value}
                   value={category.value}
@@ -63,13 +107,13 @@ export function CategoryComboBox() {
                     setOpen(false);
                   }}
                 >
-                  {category.label}
                   <Check
                     className={cn(
-                      "ml-auto",
+                      "mr-2 h-4 w-4",
                       value === category.value ? "opacity-100" : "opacity-0"
                     )}
                   />
+                  {category.label}
                 </CommandItem>
               ))}
             </CommandGroup>

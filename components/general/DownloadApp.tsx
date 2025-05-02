@@ -4,16 +4,16 @@ import React from "react";
 
 const DownloadApp = () => {
   return (
-    <div className="w-full flex items-center justify-center  gap-20 pt-10 px-20  mb-10  rounded-md bg-blue-200">
+    <div className="w-full flex items-center justify-center  lg:gap-20 pt-10 px-20  mb-10  rounded-md bg-blue-200">
       <Image
         src="/pointer.svg"
         width={300}
         height={300}
         alt="pointer-character "
-        className="bg-transparent"
+        className="bg-transparent max-md:h-64"
       />
       <div className="flex flex-col items-center">
-        <p className="text-3xl text-center font-bold ">
+        <p className="text-lg sm:text-xl md:text2xl lg:text-3xl text-center font-bold ">
           Get the App for a Smoother Job Search Experience
         </p>
         <div className="flex items-center gap-4">
@@ -23,7 +23,6 @@ const DownloadApp = () => {
               alt="goolge-play-icon"
               width={200}
               height={200}
-              className=""
             />
           </Link>
         </div>

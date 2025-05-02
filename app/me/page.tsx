@@ -1,12 +1,12 @@
 "use client";
-import { useAuth } from "@clerk/nextjs";
+import { useAuth, UserProfile } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function MePage() {
   const { isLoaded, isSignedIn, getToken } = useAuth();
   const router = useRouter();
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
   const [error, setError] = useState("");
   useEffect(() => {
     async function fetchUserData() {
@@ -58,15 +58,21 @@ export default function MePage() {
     );
   }
   return (
-    <div className="flex flex-col items-start pt-20">
-      <h1 className="text-4xl text-center">My profile page</h1>
-      <div className="flex flex-col gap-4">
-        <h1>My Informations</h1>
-        {userData && (
-          <div className="mt-4 p-4 border border-gray-300 rounded-2xl">
-            <pre>{JSON.stringify(userData, null, 2)}</pre>
-          </div>
-        )}
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full flex flex-col items-center  space-y-8">
+        <div className="text-center">
+          <h1 className="text-4xl font-extrabold text-gray-900">My Profile</h1>
+          <p className="mt-2 text-sm text-gray-600">
+            Manage your account information and settings
+          </p>
+        </div>
+
+        <div className="w-full bg-white shadow-xl rounded-2xl p-8">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            Account Information
+          </h2>
+          <UserProfile />
+        </div>
       </div>
     </div>
   );

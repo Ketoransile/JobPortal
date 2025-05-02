@@ -13,9 +13,16 @@ const companiesImages = [
 ];
 const TrustedBy = () => {
   return (
-    <div className="w-full flex items-center justify-between p-4  mt-10 border border-gray-200 drop-shadow-gray-200 shadow-xl rounded-md">
+    <div className="w-full flex flex-wrap items-center gap-10 lg:justify-between p-4  mt-10 border border-gray-200 drop-shadow-gray-200 shadow-xl rounded-md">
       {companiesImages.map((company, index) => (
-        <Image src={company} width={64} height={64} alt={company} key={index} />
+        <Image
+          src={company}
+          width={64}
+          height={64}
+          alt={company}
+          key={index}
+          className="h-10 w-10 lg:h-20 lg:w-20"
+        />
       ))}
     </div>
   );

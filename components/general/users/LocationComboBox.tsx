@@ -18,42 +18,49 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-const locations = [
-  {
-    value: "bangalore",
-    label: "Bangalore",
-  },
-  {
-    value: "washington",
-    label: "Washington",
-  },
-  {
-    value: "hyderabad",
-    label: "Hyderabad",
-  },
-  {
-    value: "mumbai",
-    label: "Mumbai",
-  },
-  {
-    value: "california",
-    label: "California",
-  },
-  {
-    value: "chennai",
-    label: "Chennai",
-  },
-  {
-    value: "new-york",
-    label: "New York",
-  },
+const jobLocations = [
+  { value: "bangalore", label: "Bangalore" },
+  { value: "washington", label: "Washington" },
+  { value: "hyderabad", label: "Hyderabad" },
+  { value: "mumbai", label: "Mumbai" },
+  { value: "california", label: "California" },
+  { value: "chennai", label: "Chennai" },
+  { value: "newyork", label: "New York" },
 ];
 
 export function LocationComboBox() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+  console.log("location choosen is ", value);
+  // const handleSelect = (currentValue) => {};
+  React.useEffect(() => {
+    const urlValue = searchParams.get("location");
+    if (urlValue) {
+      setValue(urlValue);
+    }
+  }, [setValue, searchParams]);
+  React.useEffect(() => {
+    const handleSelect = () => {
+      const params = new URLSearchParams(searchParams);
+      if (value) {
+        params.set("location", value);
+      } else {
+        params.delete("location");
+      }
+      // params.set("page", "1");
 
+      const newUrl = `${pathname}?${params.toString()}`;
+      replace(newUrl);
+      console.log("Navigating to:", newUrl);
+    };
+
+    handleSelect();
+  }, [value, pathname, searchParams, replace]);
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -64,9 +71,9 @@ export function LocationComboBox() {
           className="w-[200px] justify-between"
         >
           {value
-            ? locations.find((location) => location.value === value)?.label
+            ? jobLocations.find((location) => location.value === value)?.label
             : "Select location..."}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
@@ -75,22 +82,26 @@ export function LocationComboBox() {
           <CommandList>
             <CommandEmpty>No location found.</CommandEmpty>
             <CommandGroup>
-              {locations.map((location) => (
+              {jobLocations.map((location) => (
                 <CommandItem
                   key={location.value}
                   value={location.value}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
+                    console.log(
+                      "New value after set:",
+                      currentValue === value ? "" : currentValue
+                    );
                     setOpen(false);
                   }}
                 >
+                  {location.label}
                   <Check
                     className={cn(
-                      "mr-2 h-4 w-4",
+                      "ml-auto",
                       value === location.value ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {location.label}
                 </CommandItem>
               ))}
             </CommandGroup>

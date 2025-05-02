@@ -1,13 +1,62 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 // const jobs = [];
+import { IJob } from "@/app/types/jobType";
+import Link from "next/link";
+import { useAuth } from "@clerk/nextjs";
+const JobCard = ({ job }: { job: IJob }) => {
+  const { isSignedIn, getToken } = useAuth();
+  const [hasApplied, setHasApplied] = useState(false);
+  useEffect(() => {
+    // Check if the user has already applied for this job
+    const checkApplicationStatus = async () => {
+      try {
+        const token = await getToken();
+        if (!token) {
+          // Handle case where token is missing (user not authenticated)
+          setHasApplied(false);
+          return;
+        }
 
-const JobCard = ({ job }) => {
+        const baseUrl =
+          process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:5000";
+
+        const response = await fetch(
+          `${baseUrl}/api/v1/applications/check-application/${job._id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            credentials: "include",
+          }
+        );
+
+        // If response is OK, update the state
+        if (response.ok) {
+          const data = await response.json();
+          setHasApplied(data.hasApplied);
+        } else {
+          console.error("Failed to check application status");
+          setHasApplied(false); // Handle failed response
+        }
+      } catch (error) {
+        console.error("Error checking application status:", error);
+        setHasApplied(false); // Set to false in case of error
+      }
+    };
+
+    if (isSignedIn) {
+      checkApplicationStatus();
+    }
+  }, [job._id, isSignedIn, getToken]);
+
   return (
     <div className="flex flex-col gap-2 p-6 border border-gray-200 rounded-md shadow-2xl shadow-gray-200">
       <Image
-        src={job.icon_url}
+        src={job.companyId.iconUrl}
         width={32}
         height={32}
         alt="company-image"
@@ -26,11 +75,18 @@ const JobCard = ({ job }) => {
         {job.description}
       </p>
       <div className="flex items-center gap-4">
-        <Button className="bg-blue-600 cursor-pointer hover:bg-blue-400 text-white rounded-md text-xs">
-          Apply now
+        <Button
+          className="bg-blue-600 cursor-pointer hover:bg-blue-400 text-white rounded-md text-xs disabled:bg-blue-300"
+          disabled={hasApplied}
+          // onClick={handleApplyButton} disabled={hasApplied}
+        >
+          <Link href={`/job/${job._id}`}>
+            {" "}
+            {hasApplied ? "Applied" : "Apply"}
+          </Link>
         </Button>
-        <Button className="bg-transparent hover:bg-gray-300 cursor-pointer text-gray-600 border border-gray-200 rounded-md text-xs">
-          Learn More
+        <Button className="bg-transparent hover:bg-gray-300 cursor-pointer text-gray-600 border border-gray-200 rounded-md text-xs ">
+          <Link href={`/job/${job._id}`}>Learn More</Link>
         </Button>
       </div>
     </div>

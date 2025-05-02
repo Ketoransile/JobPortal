@@ -155,11 +155,12 @@ export const columns: ColumnDef<Job>[] = [
       const checked = row.getValue("visible");
       return (
         <Checkbox
-          checked={checked}
-          onCheckedChange={(value) =>
-            row.getValue("visible") !== value &&
-            console.log("Toggle visible:", row.original.title, value)
-          }
+          checked={checked as boolean}
+          onCheckedChange={(value) => {
+            if (row.getValue("visible") !== value) {
+              console.log("Toggle visible:", row.original.title, value);
+            }
+          }}
         />
       );
     },
