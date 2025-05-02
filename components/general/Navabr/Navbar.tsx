@@ -124,7 +124,7 @@ const Navbar = () => {
   }, [userId, getToken]);
 
   return (
-    <div className="z-10 top-0 sticky flex items-center justify-between py-4 px-4 lg:px-20 backdrop-blur-3xl bg-white/30 drop-shadow-xl shadow-gray-500">
+    <div className="z-10 top-0 sticky flex items-center justify-between py-4 px-4 lg:px-20 backdrop-blur-3xl bg-white/90 drop-shadow-xl shadow-gray-500">
       <Link href="/" className="flex items-center gap-2">
         <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-black">
           <span className="text-blue-600">Next</span>
