@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import Footer from "@/components/general/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "@/components/general/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -29,14 +30,16 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={`   ${inter.className}  antialiased`}>
-          <Navbar />
-          <div className="px-4 md:px-12 lg:px-20">
-            {children}
-            <Toaster />
-          </div>
-          <Footer />
+          <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+            <Navbar />
+            <div className="px-4 md:px-12 lg:px-20">
+              {children}
+              <Toaster />
+            </div>
+            <Footer />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

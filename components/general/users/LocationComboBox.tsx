@@ -21,13 +21,13 @@ import {
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const jobLocations = [
-  { value: "bangalore", label: "Bangalore" },
-  { value: "washington", label: "Washington" },
-  { value: "hyderabad", label: "Hyderabad" },
-  { value: "mumbai", label: "Mumbai" },
-  { value: "california", label: "California" },
-  { value: "chennai", label: "Chennai" },
-  { value: "newyork", label: "New York" },
+  { value: "Bangalore", label: "Bangalore" },
+  { value: "Washington", label: "Washington" },
+  { value: "Hyderabad", label: "Hyderabad" },
+  { value: "Mumbai", label: "Mumbai" },
+  { value: "California", label: "California" },
+  { value: "Chennai", label: "Chennai" },
+  { value: "New york", label: "New York" },
 ];
 
 export function LocationComboBox() {

@@ -14,8 +14,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+// import { useAuth } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
+// import { useRouter } from "next/navigation";
+// import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+// import { toast } from "sonner";
 import { z } from "zod";
 
 const formSchema = z.object({
@@ -43,7 +47,7 @@ export default function AddJobsPage() {
     console.log(values);
   }
   return (
-    <div className="w-1/3 flex flex-col gap-4 p-6">
+    <div className="lg:w-1/2 flex flex-col gap-4 p-6">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
@@ -74,7 +78,7 @@ export default function AddJobsPage() {
               </FormItem>
             )}
           />
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <FormField
               control={form.control}
               name="category"

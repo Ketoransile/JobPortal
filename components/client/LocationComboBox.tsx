@@ -21,31 +21,31 @@ import {
 
 const locations = [
   {
-    value: "bangalore",
+    value: "Bangalore",
     label: "Bangalore",
   },
   {
-    value: "washington",
+    value: "Washington",
     label: "Washington",
   },
   {
-    value: "hyderabad",
+    value: "Hyderabad",
     label: "Hyderabad",
   },
   {
-    value: "mumbai",
+    value: "Mumbai",
     label: "Mumbai",
   },
   {
-    value: "california",
+    value: "California",
     label: "California",
   },
   {
-    value: "chennai",
+    value: "Chennai",
     label: "Chennai",
   },
   {
-    value: "new-york",
+    value: "New York",
     label: "New York",
   },
 ];

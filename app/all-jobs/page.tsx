@@ -41,14 +41,14 @@ export default async function JobsPage(props: {
   const jobListings = response.jobs;
   const totalPages = response.totalPages;
   console.log("ztotal pages from alljobs page is", totalPages);
-  console.log("joblistings found in all-jobs page is", jobListings);
+  // console.log("joblistings found in all-jobs page is", jobListings);
   return (
     <div className="w-full pt-10 px-4">
       <div className="w-full flex flex-col gap-4">
         <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 lg:mb-10 ">
           Explore All Job Listings
         </h1>
-        <div className="w-full flex flex-col items-start justify-between mb-10 gap-4">
+        <div className="w-full flex flex-col items-start justify-between mb-10 gap-10">
           {/* <div className="">
             <Filter />
             </div>{" "} */}
@@ -64,7 +64,7 @@ export default async function JobsPage(props: {
         {/* <div className="">
           <Filter />
         </div> */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 items-start gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-4">
           {jobListings.length > 0
             ? jobListings.map((job: IJob, index: number) => (
                 <JobCard job={job} key={index} />

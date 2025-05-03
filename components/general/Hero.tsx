@@ -4,7 +4,7 @@ import SearchFilter from "./SearchFilter";
 
 const Hero = () => {
   return (
-    <div className="flex w-full flex-col gap-6 items-center  bg-purple-800 rounded-2xl text-white py-10">
+    <div className="flex w-full flex-col gap-6 items-center  bg-purple-800 rounded-2xl text-white py-10 dark:bg-black">
       <h1 className="text-4xl font-bold text-center">
         Find Your Dream Job in Seconds
       </h1>

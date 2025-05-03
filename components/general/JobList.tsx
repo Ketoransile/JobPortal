@@ -22,13 +22,13 @@ const JobList = async () => {
           </div>
           <div className="">
             <Link href="/all-jobs">
-              <Button className="bg-blue-600 hover:bg-blue-300 cursor-pointer">
+              <Button className="bg-blue-600 hover:bg-blue-300 cursor-pointer dark:text-white">
                 See All Jobs
               </Button>
             </Link>
           </div>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 items-start gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-4">
           {jobListings.length > 0 &&
             jobListings
               .slice(0, 6)

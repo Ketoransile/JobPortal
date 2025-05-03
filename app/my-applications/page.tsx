@@ -3,16 +3,20 @@ import { UserApplicationsTable } from "@/components/general/users/UserApplicatio
 // import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useAuth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { SVGProps } from "react";
 export default function MyApplicationsPage() {
   const { isSignedIn, getToken } = useAuth();
 
+  const router = useRouter();
   const [applications, setApplications] = useState([]);
   useEffect(() => {
-    async function fetchUserApplications() {
+    async function fetchUserData() {
+      const baseUrl =
+        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:5000";
+
       const token = await getToken();
       if (!token) {
         // Handle case where token is missing (user not authenticated)
@@ -20,27 +24,48 @@ export default function MyApplicationsPage() {
         toast.error("Please login first");
         return;
       }
-      const baseUrl =
-        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:5000";
+      const userResponse = await fetch(`${baseUrl}/api/v1/users/current-user`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        cache: "no-store",
+      });
+      console.log("Response from my applications page", userResponse);
+      if (!userResponse.ok) {
+        return router.push("/unauthorized");
+      }
+      const userData = await userResponse.json();
+      console.log("user data from my app page", userData);
+      if (!userData) {
+        return router.push("/unauthorized");
+      }
+      const mongodbUser = userData.data;
+      console.log("moNGODB user is", mongodbUser);
+      if (!mongodbUser || mongodbUser.role !== "user") {
+        return router.push("/unauthorized");
+      }
 
-      const res = await fetch(
+      const applicationResponse = await fetch(
         `${baseUrl}/api/v1/applications/my-applications`,
         {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${token}`, // If needed
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
-          cache: "no-store", // SSR fetch always fresh
+          cache: "no-store",
         }
       );
-      const data = await res.json();
-      console.log("data from my-applications page", data);
-      if (res.ok) {
-        setApplications(data?.data);
+      if (applicationResponse) {
+        const appliationData = await applicationResponse.json();
+        setApplications(appliationData.data);
+        console.log(appliationData);
       }
     }
-    fetchUserApplications();
-  }, [getToken]);
+    fetchUserData();
+  }, [router, getToken]);
   const totalApplications = applications ? applications.length : 0;
   const inProgress = applications
     ? applications.filter((app) => app.status === "pending").length
@@ -50,7 +75,7 @@ export default function MyApplicationsPage() {
     : 0;
 
   if (!isSignedIn) {
-    return redirect("/sign-in");
+    return router.push("/sign-in");
   }
   return (
     <div className="container mx-auto px-6 py-10">
@@ -86,7 +111,7 @@ export default function MyApplicationsPage() {
         </div>
 
         {/* Applications Table */}
-        <Card className="shadow-md rounded-2xl border border-gray-200">
+        <Card className="shadow-md rounded-2xl border border-gray-200 dark:border-neutral-900">
           <CardHeader className="pb-4">
             <CardTitle className="text-xl font-semibold">
               Recent Applications
@@ -128,7 +153,7 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   return (
-    <Card className="hover:shadow-lg transition-shadow duration-300 rounded-2xl border border-gray-200">
+    <Card className="hover:shadow-lg transition-shadow duration-300 rounded-2xl border border-gray-200 dark:border-neutral-900">
       <CardContent className="p-6 flex flex-col gap-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center justify-center h-10 w-10 bg-muted rounded-full">

@@ -16,8 +16,9 @@ const Footer = () => {
           </h1>
         </Link>
         <div className="flex flex-col items-center gap-2">
-          <p className="text-gray-400 text-sm">| Copyright @NextJobs</p>
-          <p className="text-gray-400 text-sm">| All right reserved.</p>
+          <p className="text-gray-400 text-sm">
+            | Copyright @NextJobs All right reserved.
+          </p>
         </div>
       </div>
       <div className="flex items-center gap-4">

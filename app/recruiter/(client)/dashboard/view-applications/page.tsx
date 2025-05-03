@@ -2,7 +2,7 @@ import { ViewApplicationsTable } from "@/components/general/Tables/ViewApplicati
 
 export default function ViewApplicationsPage() {
   return (
-    <div className="pt-10 p-4">
+    <div className="pt-10 p-4 ">
       <ViewApplicationsTable />
     </div>
   );

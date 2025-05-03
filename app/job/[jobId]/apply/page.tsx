@@ -1,19 +1,64 @@
-import { fetchJobs } from "@/components/general/fetchJobs";
+// import { fetchJobs } from "@/components/general/fetchJobs";
 import JobCard from "@/components/general/JobCard";
+import UnAuthorized from "@/components/general/UnAuthorized";
 import { JobApplicationForm } from "@/components/general/users/JobApplicationForm";
-
+import { auth, currentUser } from "@clerk/nextjs/server";
 export default async function ApplyPage({
   params,
 }: {
   params: Promise<{ jobId: string }>;
 }) {
-  const { jobId } = await params;
-  const response = await fetchJobs();
-  const jobListings = response.jobs;
-  const job = jobListings.find((job) => job._id === jobId);
-  if (!job) {
-    return <div>Application page for this job found</div>;
+  const user = await currentUser();
+  const { getToken } = await auth();
+  const token = await getToken();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:5000";
+  const userResponse = await fetch(`${baseUrl}/api/v1/users/current-user`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    cache: "no-store",
+  });
+  if (!userResponse.ok) {
+    return <UnAuthorized />;
   }
+  const userData = await userResponse.json();
+  if (!userData) {
+    return <UnAuthorized />;
+  }
+  const mongodbUser = userData.data;
+  console.log("moNGODB user is", mongodbUser);
+  if (!mongodbUser || mongodbUser.role !== "user") {
+    return <UnAuthorized />;
+  }
+
+  const { jobId } = await params;
+  // const response = await fetchJobs();
+  // const jobListings = response.jobs;
+  // const job = jobListings.find((job) => job._id === jobId);
+  const response = await fetch(`${baseUrl}/api/v1/jobs/getSingleJob/${jobId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+  });
+  if (!response.ok) {
+    return <div>Application Page for this job was not found</div>;
+  }
+  console.log("response from apply page is", response);
+  const data = await response.json();
+  console.log("Data from apply page i s", data);
+  if (!data) {
+    return <div>Application page for this job not found</div>;
+  }
+  const job = data.job;
+  if (!job) {
+    return <div>Application page for this job not found</div>;
+  }
+
+  console.log("Current user in apply pagi s", user);
   // console.log("jobid from apply page is ", jobId);
   return (
     <div className="flex flex-col gap-6 items-center pt-10">

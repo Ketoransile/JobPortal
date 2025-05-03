@@ -5,7 +5,7 @@ import TrustedBy from "@/components/general/TrustedBy";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-10 items-center pt-20 ">
+    <div className="flex flex-col gap-20 items-center pt-20 ">
       <Hero />
       <TrustedBy />
       <JobList />
