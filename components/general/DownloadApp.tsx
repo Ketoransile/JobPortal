@@ -4,7 +4,7 @@ import React from "react";
 
 const DownloadApp = () => {
   return (
-    <div className="w-full flex items-center justify-center  lg:gap-20 pt-10 px-20  mb-10  rounded-md bg-blue-200 dark:bg-black dark:border border-gray-500 dark:border-neutral-900">
+    <div className="w-full flex items-center justify-center  lg:gap-20 pt-10 px-20  mb-10  rounded-md bg-blue-200 dark:bg-neutral-900 dark:border border-gray-500 dark:border-neutral-900">
       <Image
         src="/pointer.svg"
         width={300}

@@ -157,7 +157,11 @@ export function JobApplicationForm({ jobId }) {
             <FormItem>
               <FormLabel>Portfolio (optional)</FormLabel>
               <FormControl>
-                <Input placeholder="" {...field} />
+                <Input
+                  placeholder=""
+                  {...field}
+                  className="dark:border-neutral-900"
+                />
               </FormControl>
 
               <FormMessage />
@@ -175,7 +179,7 @@ export function JobApplicationForm({ jobId }) {
                 <Textarea
                   placeholder="Type your message here."
                   {...field}
-                  className="min-h-32"
+                  className="min-h-32  dark:border-neutral-900"
                 />
               </FormControl>
 
@@ -199,6 +203,7 @@ export function JobApplicationForm({ jobId }) {
                       field.onChange(event.target.files[0]);
                     }
                   }}
+                  className="dark:border-neutral-900"
                 />
               </FormControl>
               <FormMessage />

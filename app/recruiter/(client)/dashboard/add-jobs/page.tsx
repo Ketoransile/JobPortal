@@ -57,7 +57,11 @@ export default function AddJobsPage() {
               <FormItem>
                 <FormLabel>Job Title</FormLabel>
                 <FormControl>
-                  <Input placeholder="Type here" {...field} />
+                  <Input
+                    placeholder="Type here"
+                    {...field}
+                    className="dark:border-neutral-900"
+                  />
                 </FormControl>
 
                 <FormMessage />
@@ -71,7 +75,11 @@ export default function AddJobsPage() {
               <FormItem>
                 <FormLabel>Job Description</FormLabel>
                 <FormControl>
-                  <Input placeholder="Type here" {...field} />
+                  <Input
+                    placeholder="Type here"
+                    {...field}
+                    className="dark:border-neutral-900"
+                  />
                 </FormControl>
 
                 <FormMessage />
@@ -87,7 +95,10 @@ export default function AddJobsPage() {
                   <FormLabel>Job Category</FormLabel>
                   <FormControl>
                     {/* <Input placeholder="Type here" {...field} /> */}
-                    <CategoryComboBox field={field} />
+                    <CategoryComboBox
+                      field={field}
+                      className="dark:border-neutral-900"
+                    />
                   </FormControl>
 
                   <FormMessage />
@@ -102,7 +113,10 @@ export default function AddJobsPage() {
                   <FormLabel>Job Location</FormLabel>
                   <FormControl>
                     {/* <Input placeholder="Type here" {...field} /> */}
-                    <LocationComboBox field={field} />
+                    <LocationComboBox
+                      field={field}
+                      className="dark:border-neutral-900"
+                    />
                   </FormControl>
 
                   <FormMessage />
@@ -132,7 +146,11 @@ export default function AddJobsPage() {
               <FormItem>
                 <FormLabel>Job Salary</FormLabel>
                 <FormControl>
-                  <Input placeholder="6000" {...field} />
+                  <Input
+                    placeholder="6000"
+                    {...field}
+                    className="dark:border-neutral-900"
+                  />
                 </FormControl>
 
                 <FormMessage />

@@ -14,9 +14,11 @@ export default async function JobDetailsPage({
 
   if (!job) {
     return (
-      <div className="flex flex-col items-center justify-center pt-32 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Job Not Found</h2>
-        <p className="text-lg text-gray-600">
+      <div className="flex flex-col items-center justify-center pt-52 text-center">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
+          Job Not Found
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-200">
           Sorry, we couldn&apos;t find the job you&apos;re looking for.
         </p>
       </div>

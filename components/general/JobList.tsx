@@ -28,10 +28,10 @@ const JobList = async () => {
             </Link>
           </div>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-4">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start gap-4">
           {jobListings.length > 0 &&
             jobListings
-              .slice(0, 6)
+              .slice(0, 8)
               .map((job: IJob, index: number) => (
                 <JobCard job={job} key={index} />
               ))}

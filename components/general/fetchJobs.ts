@@ -14,8 +14,8 @@ export const fetchJobs = async (
     if (location) queryParams.append("location", location);
     if (category) queryParams.append("category", category);
     if (company) queryParams.append("company", company);
-    queryParams.append("page", page);
-    queryParams.append("limit", limit);
+    if (page) queryParams.append("page", page);
+    if (limit) queryParams.append("limit", limit);
 
     const url = `${baseUrl}/api/v1/jobs/getAllJobs?${queryParams.toString()}`;
     console.log("Final request URL:", url); // Verify this shows correct params

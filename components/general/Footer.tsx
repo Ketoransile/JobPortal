@@ -11,7 +11,7 @@ const Footer = () => {
         <Link href="/" className="flex items-center gap-2">
           {/* <Image src="/logo.png" width={32} height={32} alt="logo-image" /> */}
           <h1 className="text-2xl font-bold hover:scale-110">
-            <span className="text-blue-600">Next</span>
+            <span className="">Next</span>
             Jobs
           </h1>
         </Link>

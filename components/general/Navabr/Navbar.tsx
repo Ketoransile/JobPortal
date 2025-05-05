@@ -27,7 +27,9 @@ const Navbar = () => {
             },
             cache: "no-store",
           });
-
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
           const data = await response.json();
           console.log("data from navabr is", data.data);
           setUserRole(data?.data?.role || null);
@@ -41,32 +43,32 @@ const Navbar = () => {
   }, [userId, getToken]);
 
   return (
-    <div className="z-10 top-0 sticky flex items-center justify-between py-4 px-4 lg:px-20 backdrop-blur-3xl bg-white dark:bg-black/60 dark:border-b border-b-neutral-700 shadow-none">
+    <div className="z-10 top-0 sticky flex items-center justify-between py-4 px-4 lg:px-20 backdrop-blur-3xl bg-white dark:bg-black dark:border-b border-b-neutral-900 shadow-none">
       <Link href="/" className="flex items-center gap-2">
         <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-black dark:text-white">
-          <span className="text-blue-600 ">Next</span>
+          <span className=" ">Next</span>
           Jobs
         </h1>
       </Link>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-6">
         <SignedOut>
           <Link href="/recruiter/sign-up" className="">
-            <Button className="p-2 rounded-md bg-transparent border border-gray-300 text-gray-500 hover:bg-gray-300 cursor-pointer">
+            <Button className="p-2 rounded-md bg-transparent border border-gray-300 dark:border-neutral-900 dark:hover:bg-neutral-900 text-gray-500 dark:text-white hover:bg-gray-300 cursor-pointer">
               Recruiters
             </Button>
           </Link>
           <Link href="/sign-in" className="">
-            <Button className="bg-blue-600 hover:bg-blue-400 rounded-full px-6 cursor-pointer">
+            <Button className="bg-blue-600 dark:text-white hover:bg-blue-400 rounded-full px-6 cursor-pointer">
               Login
             </Button>
           </Link>
         </SignedOut>
         <SignedIn>
           <div className="flex items-center gap-4">
-            <h1 className="hidden lg:flex text-base text-center  ">
+            {/* <h1 className="hidden lg:flex text-base text-center  ">
               Hi, {user?.firstName}
-            </h1>
-            <UserButtonComponent userRole={userRole} />
+            </h1> */}
+            {userRole && <UserButtonComponent userRole={userRole} />}
           </div>
         </SignedIn>
         <ThemeToggle />

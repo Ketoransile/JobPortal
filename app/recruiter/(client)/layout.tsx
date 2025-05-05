@@ -65,11 +65,11 @@ export default function DashboardLayout({
     <html lang="en">
       <body>
         <div className="flex flex-col gap-6 lg:grid lg:grid-cols-6 items-start pt-10 lg:-mx-20  ">
-          <div className="lg:min-h-screen lg:col-span-1 flex lg:flex-col max-lg:border max-lg:border-gray-300  lg:border-r border-r-gray-300 text-sm">
+          <div className="lg:min-h-screen lg:col-span-1 flex lg:flex-col max-lg:border max-lg:border-gray-300  lg:border-r border-r-gray-300 dark:border-r-neutral-800 text-sm">
             {pathname === "/recruiter/dashboard/add-jobs" ? (
               <Link
                 href="/recruiter/dashboard/add-jobs"
-                className="flex items-center gap-2 bg-blue-100 p-4 border-r-4 border-blue-600
+                className="flex items-center gap-2 bg-blue-100 dark:bg-muted p-4 border-r-4 border-blue-600
             "
               >
                 <MdOutlineAddToPhotos size={20} />
@@ -88,7 +88,7 @@ export default function DashboardLayout({
             {pathname === "/recruiter/dashboard/manage-jobs" ? (
               <Link
                 href="/recruiter/dashboard/manage-jobs"
-                className="flex items-center gap-2 bg-blue-100 p-4 border-r-4 border-blue-600
+                className="flex items-center gap-2 bg-blue-100 dark:bg-muted p-4 border-r-4 border-blue-600
             "
               >
                 <MdManageAccounts size={20} />
@@ -107,7 +107,7 @@ export default function DashboardLayout({
             {pathname === "/recruiter/dashboard/view-applications" ? (
               <Link
                 href="/recruiter/dashboard/view-applications"
-                className="flex items-center gap-2 bg-blue-100 p-4 border-r-4 border-blue-600
+                className="flex items-center gap-2 bg-blue-100 dark:bg-muted p-4 border-r-4 border-blue-600
             "
               >
                 <VscGitStashApply size={20} />

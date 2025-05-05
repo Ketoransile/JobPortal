@@ -17,9 +17,9 @@ const CompanyLogoData: Array<{ src: string; alt: string }> = [
 export const InfiniteScrollingLogosAnimation = () => {
   return (
     <div className="h-fit container p-5">
-      <h2 className="text-center text-md text-black  dark:text-white my-5 mb-10 font-mono">
+      {/* <h2 className="text-center text-md text-black  dark:text-white my-5 mb-10 font-mono">
         Trusted by the world&apos;s most innovative companies
-      </h2>
+      </h2> */}
       <div className="flex relative overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-10  before:content-[''] after:absolute after:right-0 after:top-0 after:h-full after:w-10 after:bg-gradient-to-l  after:content-['']">
         <motion.div
           transition={{

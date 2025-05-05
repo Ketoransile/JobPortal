@@ -40,12 +40,12 @@ const SearchFilter = () => {
     router.replace(targetPath);
   }, 300);
   return (
-    <div className="lg:w-1/2  flex items-center justify-between p-2 mt-4   bg-white dark:bg-neutral-900 border border-gray-300 dark:border-gray-900 rounded-md">
+    <div className="lg:w-1/2  flex items-center justify-between p-2 mt-4   bg-white dark:bg-neutral-900 border border-gray-300 dark:border-neutral-900 rounded-md">
       <div className="w-full flex items-center dark:text-black">
-        <CiSearch size={20} className="text-gray-500 dark:text-white" />
+        <CiSearch size={20} className="text-gray-500" />
         <Input
           placeholder="Search by title or description"
-          className="border-none focus-visible:ring-0 text-black  dark:text-white text-sm dark:border-none"
+          className="border-none focus-visible:ring-0 text-black !bg-transparent dark:text-white text-sm dark:border-none"
           onChange={(e) => {
             e.preventDefault();
             handleSearch(e.target.value);
@@ -54,13 +54,10 @@ const SearchFilter = () => {
         />
       </div>
       <div className=" w-full flex items-center  text-gray-500 dark:text-black">
-        <IoLocationOutline
-          size={20}
-          className="text-gray-500 dark:text-white"
-        />
+        <IoLocationOutline size={20} className="text-gray-500 " />
         <Input
           placeholder="Location"
-          className="border-none text-black dark:text-white text-sm  focus-visible:ring-0"
+          className="border-none text-black dark:text-white text-sm  focus-visible:ring-0 !bg-transparent"
           onChange={(e) => {
             e.preventDefault();
             handleLocationSearch(e.target.value);

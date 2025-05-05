@@ -32,18 +32,16 @@ const jobLocations = [
 
 export function LocationComboBox() {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  console.log("location choosen is ", value);
+  const urlLocation = searchParams.get("location") || "";
+  const [value, setValue] = React.useState(urlLocation);
+
   // const handleSelect = (currentValue) => {};
   React.useEffect(() => {
-    const urlValue = searchParams.get("location");
-    if (urlValue) {
-      setValue(urlValue);
-    }
-  }, [setValue, searchParams]);
+    setValue(urlLocation);
+  }, [urlLocation, setValue]);
   React.useEffect(() => {
     const handleSelect = () => {
       const params = new URLSearchParams(searchParams);

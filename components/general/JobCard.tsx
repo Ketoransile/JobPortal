@@ -54,7 +54,7 @@ const JobCard = ({ job }: { job: IJob }) => {
   }, [job._id, isSignedIn, getToken]);
 
   return (
-    <div className="flex flex-col gap-2 p-6 border border-gray-200 dark:border-neutral-900 rounded-md shadow-2xl dark:shadow-none shadow-gray-200">
+    <div className="flex flex-col gap-2 p-6 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-900 rounded-md shadow-2xl dark:shadow-none shadow-gray-200">
       <Image
         src={job.companyId.iconUrl}
         width={32}
@@ -85,7 +85,7 @@ const JobCard = ({ job }: { job: IJob }) => {
             {hasApplied ? "Applied" : "Apply"}
           </Link>
         </Button>
-        <Button className="bg-transparent hover:bg-gray-300 cursor-pointer text-gray-600 dark:text-white border border-gray-200 rounded-md text-xs ">
+        <Button className="bg-transparent hover:bg-gray-300 dark:hover:bg-neutral-800 cursor-pointer text-gray-600 dark:text-white border border-gray-200 dark:border-neutral-900 rounded-md text-xs ">
           <Link href={`/job/${job._id}`}>Learn More</Link>
         </Button>
       </div>

@@ -377,10 +377,10 @@ export function ViewApplicationsTable() {
       cell: ({ row }) => {
         const resumeUrl = row.getValue("resume") as string;
         return (
-          <div className="w-fit flex items-center pr-2 bg-blue-100 rounded-md text-blue-500">
+          <div className="w-fit flex items-center pr-2 bg-blue-100 dark:bg-muted rounded-md text-blue-500 dark:text-white">
             <Button variant="link" asChild>
               <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
-                <p className="text-blue-500">View Resume</p>
+                <p className="text-blue-500 dark:text-white">View Resume</p>
               </Link>
             </Button>
             <MdOutlineFileDownload size={20} />

@@ -28,7 +28,7 @@ export default async function JobsPage(props: {
   const company = searchParams?.company || "";
   const category = searchParams?.category || "";
   const page = searchParams?.page || "";
-  const limit = searchParams?.limit || "";
+  const limit = searchParams?.limit || "4";
   console.log("Frontend params are ", search, location, page, limit);
   const response = await fetchJobs(
     search,
