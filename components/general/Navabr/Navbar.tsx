@@ -9,7 +9,7 @@ import { ThemeToggle } from "../ThemeToggle";
 
 const Navbar = () => {
   const { userId, getToken } = useAuth();
-  const { user } = useUser(); // <-- Clerk hook to get user data
+  // const { user } = useUser(); // <-- Clerk hook to get user data
   const [userRole, setUserRole] = useState<string | null>(null);
 
   useEffect(() => {
