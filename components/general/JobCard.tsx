@@ -54,7 +54,7 @@ const JobCard = ({ job }: { job: IJob }) => {
   }, [job._id, isSignedIn, getToken]);
 
   return (
-    <div className="flex flex-col gap-2 p-6 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-900 rounded-md shadow-2xl dark:shadow-none shadow-gray-200">
+    <div className="flex flex-col  gap-2 p-2 sm:p-6 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-900 rounded-md shadow-2xl dark:shadow-none shadow-gray-200">
       <Image
         src={job.companyId.iconUrl}
         width={32}
@@ -63,11 +63,11 @@ const JobCard = ({ job }: { job: IJob }) => {
         className="w-20 h-20 bg-white dark:p-2"
       />
       <h1 className="font-semibold text-lg">{job.title}</h1>
-      <div className="flex items-center gap-2 text-xs ">
-        <div className=" px-6 py-2 bg-blue-100 border border-blue-200 rounded-sm text-black text-xs">
+      <div className="flex max-sm:w-fit  sm:items-center gap-2 text-xs ">
+        <div className=" max-sm:w-fit  px-2 sm:px-6 py-2 bg-blue-100 border border-blue-200 rounded-sm text-black text-xs">
           {job.location}
         </div>
-        <div className=" px-6 py-2 bg-red-100 border border-red-200 rounded-sm text-black text-xs">
+        <div className=" max-sm:w-fit  px-2 sm:px-6 py-2 bg-red-100 border border-red-200 rounded-sm text-black text-xs">
           {job.level}
         </div>
       </div>
