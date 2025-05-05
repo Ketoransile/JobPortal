@@ -12,7 +12,7 @@ const JobList = async () => {
   const jobListings = response.jobs;
   return (
     <>
-      <div className="w-full hidden md:grid grid-cols-4 items-start justify-between  pt-20 pb-10">
+      <div className="w-full grid grid-cols-4 items-start justify-between  pt-20 pb-10">
         {/* <div className="col-span-1">
         <Filter />
         </div> */}
@@ -32,18 +32,18 @@ const JobList = async () => {
               </Link>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 items-start gap-4">
+          <div className="hidden md:grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 items-start gap-4">
             {jobListings.length > 0 &&
               jobListings
                 .slice(0, 8)
                 .map((job: IJob, index: number) => (
                   <JobCard job={job} key={index} />
                 ))}
+          </div>{" "}
+          <div className="md:hidden">
+            <MobileScreenJobsCarousel jobListings={jobListings} />
           </div>
         </div>
-      </div>
-      <div className="">
-        <MobileScreenJobsCarousel jobListings={jobListings} />
       </div>
     </>
     // </div>
