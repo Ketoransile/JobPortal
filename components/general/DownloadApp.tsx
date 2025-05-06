@@ -10,10 +10,10 @@ const DownloadApp = () => {
         width={300}
         height={300}
         alt="pointer-character "
-        className="bg-transparent max-md:h-64"
+        className="bg-transparent max-sm:hidden max-md:h-64"
       />
       <div className="flex flex-col items-center">
-        <p className="text-lg sm:text-xl md:text2xl lg:text-3xl text-center font-bold ">
+        <p className="text-md sm:text-xl md:text2xl lg:text-3xl text-center font-bold ">
           Get the App for a Smoother Job Search Experience
         </p>
         <div className="flex items-center gap-4">

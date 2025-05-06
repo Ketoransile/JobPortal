@@ -17,7 +17,7 @@ const JobList = async () => {
         <Filter />
         </div> */}
         <div className="w-full col-span-4 flex flex-col gap-4">
-          <div className="flex items center justify-between pb-10">
+          <div className="flex max-sm:flex-col gap-4 items center justify-between pb-10">
             <div className="">
               <h1 className="text-3xl font-bold">Latest Jobs</h1>
               <h2 className="text-md">
