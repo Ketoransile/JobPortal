@@ -19,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { LoadingSpinner } from "../LoadingSpinner";
 
 const MAX_SIZE = 1000000;
 const formSchema = z.object({
@@ -228,10 +229,10 @@ export function JobApplicationForm({ jobId }) {
 
         <button
           type="submit"
-          className="bg-blue-500 py-2 px-6 rounded-xl text-white hover:bg-blue-300 disabled:bg-blue-300 cursor-pointer"
+          className="bg-blue-500 py-2 px-6 rounded-xl text-white hover:bg-blue-400 disabled:bg-blue-400 cursor-pointer"
           disabled={loading || hasApplied || !resumeUploaded}
         >
-          {loading ? "Submitting..." : hasApplied ? "Applied" : "Apply"}
+          {loading ? <LoadingSpinner /> : hasApplied ? "Applied" : "Apply"}
         </button>
       </form>
     </Form>
