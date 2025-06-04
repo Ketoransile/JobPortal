@@ -52,13 +52,13 @@ const Navbar = () => {
       </Link>
       <div className="flex items-center gap-6">
         <SignedOut>
-          <Link href="/recruiter/sign-up" className="">
+          {/* <Link href="/recruiter/sign-up" className="">
             <Button className="p-2 rounded-md bg-transparent border border-gray-300 dark:border-neutral-900 dark:hover:bg-neutral-900 text-gray-500 dark:text-white hover:bg-gray-300 cursor-pointer">
               Recruiters
             </Button>
-          </Link>
+          </Link> */}
           <Link href="/sign-in" className="">
-            <Button className="bg-blue-600 dark:text-white hover:bg-blue-400 rounded-full px-6 cursor-pointer">
+            <Button className="bg-blue-600 dark:text-white hover:bg-blue-400 rounded-md px-6 cursor-pointer">
               Login
             </Button>
           </Link>

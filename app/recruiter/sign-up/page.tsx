@@ -119,9 +119,9 @@ export default function RecruiterSignUp() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center mb-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-black px-4">
+      <div className="bg-white dark:bg-neutral-600 p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <h1 className="text-3xl font-bold text-center mb-6 dark:text-white">
           Recruiter Sign Up
         </h1>
 
@@ -171,7 +171,7 @@ export default function RecruiterSignUp() {
               <select
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full dark:bg-neutral-600 px-4 py-2 border rounded-md"
                 required
               >
                 <option value="" disabled>

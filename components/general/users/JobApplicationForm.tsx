@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const MAX_SIZE = 1000000;
 const formSchema = z.object({
@@ -40,6 +41,7 @@ export function JobApplicationForm({ jobId }) {
   const { isSignedIn, getToken } = useAuth();
   const [loading, setLoading] = useState(false);
   const [hasApplied, setHasApplied] = useState(false);
+  const router = useRouter();
   // 1. Define your form.
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -100,6 +102,7 @@ export function JobApplicationForm({ jobId }) {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const token = await getToken();
+
       // console.log("Submitting form with values:", values);
       setLoading(true);
       const formData = new FormData();
@@ -129,6 +132,7 @@ export function JobApplicationForm({ jobId }) {
       } else {
         form.reset();
         setLoading(false);
+        router.push("/");
         // console.log("Application submitted successfully!");
         toast.success("Application submitted successfully!");
       }

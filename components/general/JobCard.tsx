@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import { IJob } from "@/app/types/jobType";
 import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
+import { LoadingSpinner } from "./LoadingSpinner";
 const JobCard = ({ job }: { job: IJob }) => {
   const { isSignedIn, getToken } = useAuth();
   const [hasApplied, setHasApplied] = useState(false);
@@ -75,7 +76,7 @@ const JobCard = ({ job }: { job: IJob }) => {
         {job.description}
       </p>
       <div className="flex items-center gap-4">
-        <Button
+        {/* <Button
           className="bg-blue-600 cursor-pointer hover:bg-blue-400 text-white rounded-md text-xs disabled:bg-blue-300"
           disabled={hasApplied}
           // onClick={handleApplyButton} disabled={hasApplied}
@@ -87,7 +88,20 @@ const JobCard = ({ job }: { job: IJob }) => {
         </Button>
         <Button className="bg-transparent hover:bg-gray-300 dark:hover:bg-neutral-800 cursor-pointer text-gray-600 dark:text-white border border-gray-200 dark:border-neutral-900 rounded-md text-xs ">
           <Link href={`/job/${job._id}`}>Learn More</Link>
-        </Button>
+        </Button> */}
+        <Link href={`/job/${job._id}`} passHref legacyBehavior>
+          <Button
+            className="bg-blue-600 cursor-pointer hover:bg-blue-400 text-white rounded-md text-xs disabled:bg-blue-300"
+            disabled={hasApplied} // Or isLoadingStatus if you added that
+          >
+            {hasApplied ? "Applied" : "Apply"}
+          </Button>
+        </Link>
+        <Link href={`/job/${job._id}`} passHref legacyBehavior>
+          <Button className="bg-transparent hover:bg-gray-300 dark:hover:bg-neutral-800 cursor-pointer text-gray-600 dark:text-white border border-gray-200 dark:border-neutral-900 rounded-md text-xs ">
+            Learn More
+          </Button>
+        </Link>
       </div>
     </div>
   );
