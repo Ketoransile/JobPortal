@@ -88,7 +88,7 @@ const JobCard = ({ job }: { job: IJob }) => {
         <Button className="bg-transparent hover:bg-gray-300 dark:hover:bg-neutral-800 cursor-pointer text-gray-600 dark:text-white border border-gray-200 dark:border-neutral-900 rounded-md text-xs ">
           <Link href={`/job/${job._id}`}>Learn More</Link>
         </Button> */}
-        <Link href={`/job/${job._id}`} passHref legacyBehavior>
+        <Link href={`/job/${job._id}`} passHref>
           <Button
             className="bg-blue-600 cursor-pointer hover:bg-blue-400 text-white rounded-md text-xs disabled:bg-blue-300"
             disabled={hasApplied} // Or isLoadingStatus if you added that
@@ -96,7 +96,7 @@ const JobCard = ({ job }: { job: IJob }) => {
             {hasApplied ? "Applied" : "Apply"}
           </Button>
         </Link>
-        <Link href={`/job/${job._id}`} passHref legacyBehavior>
+        <Link href={`/job/${job._id}`} passHref>
           <Button className="bg-transparent hover:bg-gray-300 dark:hover:bg-neutral-800 cursor-pointer text-gray-600 dark:text-white border border-gray-200 dark:border-neutral-900 rounded-md text-xs ">
             Learn More
           </Button>
