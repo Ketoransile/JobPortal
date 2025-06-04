@@ -40,6 +40,8 @@ const formSchema = z.object({
 export function JobApplicationForm({ jobId }) {
   const { isSignedIn, getToken } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [resumeUploaded, setResumeUploaded] = useState(false);
+
   const [hasApplied, setHasApplied] = useState(false);
   const router = useRouter();
   // 1. Define your form.
@@ -202,9 +204,18 @@ export function JobApplicationForm({ jobId }) {
                   type="file"
                   accept="application/pdf"
                   placeholder="Your resume in pdf format. Max 1MB"
+                  // onChange={(event) => {
+                  //   if (event.target.files && event.target.files.length > 0) {
+                  //     field.onChange(event.target.files[0]);
+                  //   }
+                  // }}
                   onChange={(event) => {
-                    if (event.target.files && event.target.files.length > 0) {
-                      field.onChange(event.target.files[0]);
+                    const file = event.target.files?.[0];
+                    if (file) {
+                      field.onChange(file);
+                      setResumeUploaded(true);
+                    } else {
+                      setResumeUploaded(false);
                     }
                   }}
                   className="dark:border-neutral-900"
@@ -218,7 +229,7 @@ export function JobApplicationForm({ jobId }) {
         <button
           type="submit"
           className="bg-blue-500 py-2 px-6 rounded-xl text-white hover:bg-blue-300 disabled:bg-blue-300 cursor-pointer"
-          disabled={loading || hasApplied}
+          disabled={loading || hasApplied || !resumeUploaded}
         >
           {loading ? "Submitting..." : hasApplied ? "Applied" : "Apply"}
         </button>
