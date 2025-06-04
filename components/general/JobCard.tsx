@@ -6,7 +6,6 @@ import { Button } from "../ui/button";
 import { IJob } from "@/app/types/jobType";
 import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
-import { LoadingSpinner } from "./LoadingSpinner";
 const JobCard = ({ job }: { job: IJob }) => {
   const { isSignedIn, getToken } = useAuth();
   const [hasApplied, setHasApplied] = useState(false);
