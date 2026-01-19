@@ -43,39 +43,41 @@ export default async function JobsPage(props: {
   console.log("ztotal pages from alljobs page is", totalPages);
   // console.log("joblistings found in all-jobs page is", jobListings);
   return (
-    <div className="w-full pt-10 px-4">
-      <div className="w-full flex flex-col gap-4">
-        <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 md:mb-6 lg:mb-10 ">
-          Explore All Job Listings
+    <div className="w-full max-w-7xl mx-auto space-y-10 pb-20">
+      <div className="flex flex-col gap-6 items-center text-center max-w-2xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Explore All <span className="text-blue-600">Job Listings</span>
         </h1>
-        <div className="w-full flex flex-col items-start justify-between mb-10 gap-10">
-          {/* <div className="">
-            <Filter />
-            </div>{" "} */}
-          <SearchFilter />
-          <div className="w-full flex flex-wrap items-center max-md:justify-center gap-4">
-            <CategoryComboBox />
-            <CompanyComboBox />
-            <LocationComboBox />
-          </div>
+        <p className="text-lg text-gray-500 dark:text-gray-400">
+          Find the perfect role for you from our extensive list of opportunities.
+        </p>
+      </div>
+
+      <div className="w-full flex flex-col gap-6 bg-gray-50/50 dark:bg-zinc-900/30 p-6 rounded-3xl border border-gray-100 dark:border-zinc-800">
+        <SearchFilter />
+        <div className="w-full flex flex-wrap items-center justify-center gap-4">
+          <CategoryComboBox />
+          <CompanyComboBox />
+          <LocationComboBox />
         </div>
       </div>
+
       <div className="flex flex-col gap-10">
-        {/* <div className="">
-          <Filter />
-        </div> */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {jobListings.length > 0
             ? jobListings.map((job: IJob, index: number) => (
-                <JobCard job={job} key={index} />
-              ))
-            : "No Jobs found!!"}
+              <JobCard job={job} key={index} />
+            ))
+            : (
+              <div className="col-span-full flex flex-col items-center justify-center py-20 text-center text-gray-500">
+                <p className="text-xl">No jobs found matching your criteria.</p>
+              </div>
+            )}
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-t border-gray-100 dark:border-zinc-800 pt-8">
           <JobsPerPage />
           <PaginationComponent pageCount={totalPages} />
         </div>
-        {/* <Pagination /> */}
       </div>
     </div>
   );

@@ -5,9 +5,11 @@ import { UserButton } from "@clerk/nextjs";
 import { VscGitStashApply } from "react-icons/vsc";
 import { FcManager } from "react-icons/fc";
 
-const UserButtonComponent = ({ userRole }) => {
-  console.log("user role passed to userbutton is ", userRole);
+interface UserButtonComponentProps {
+  userRole: string | null;
+}
 
+const UserButtonComponent = ({ userRole }: UserButtonComponentProps) => {
   return (
     <UserButton>
       <UserButton.MenuItems>
@@ -16,6 +18,13 @@ const UserButtonComponent = ({ userRole }) => {
             label="My Applications"
             labelIcon={<VscGitStashApply size={16} />}
             href="/my-applications"
+          />
+        )}
+        {userRole === "user" && (
+          <UserButton.Link
+            label="Become a Recruiter"
+            labelIcon={<MdDashboard size={16} />}
+            href="/onboarding"
           />
         )}
         {userRole === "recruiter" && (
@@ -29,7 +38,7 @@ const UserButtonComponent = ({ userRole }) => {
           <UserButton.Link
             label="Admin Dashboard"
             labelIcon={<FcManager size="16" />}
-            href="#"
+            href="/admin"
           />
         )}
       </UserButton.MenuItems>

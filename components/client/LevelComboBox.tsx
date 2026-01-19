@@ -34,18 +34,27 @@ const experienceLevels = [
   },
 ];
 
-export function LevelComboBox({ field }) {
+interface LevelComboBoxProps {
+  field: any;
+  className?: string; // Add className
+}
+
+export function LevelComboBox({ field, className }: LevelComboBoxProps) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState(field.value || "");
+
+  React.useEffect(() => {
+    setValue(field.value || "");
+  }, [field.value]);
 
   return (
-    <Popover open={open} onOpenChange={setOpen} {...field}>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className={cn("w-[200px] justify-between", className)}
         >
           {value
             ? experienceLevels.find((level) => level.value === value)?.label
@@ -64,7 +73,9 @@ export function LevelComboBox({ field }) {
                   key={level.value}
                   value={level.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                    const newValue = currentValue === value ? "" : currentValue;
+                    setValue(newValue);
+                    field.onChange(newValue);
                     setOpen(false);
                   }}
                 >

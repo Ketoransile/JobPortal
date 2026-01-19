@@ -20,16 +20,16 @@ export const InfiniteScrollingLogosAnimation = () => {
       {/* <h2 className="text-center text-md text-black  dark:text-white my-5 mb-10 font-mono">
         Trusted by the world&apos;s most innovative companies
       </h2> */}
-      <div className="flex relative overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-10  before:content-[''] after:absolute after:right-0 after:top-0 after:h-full after:w-10 after:bg-gradient-to-l  after:content-['']">
+      <div className="flex relative overflow-hidden before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-white before:to-transparent dark:before:from-zinc-950 before:content-[''] after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-white after:to-transparent dark:after:from-zinc-950 after:content-['']">
         <motion.div
           transition={{
-            duration: 10,
+            duration: 20,
             ease: "linear",
             repeat: Infinity,
           }}
           initial={{ translateX: 0 }}
           animate={{ translateX: "-50%" }}
-          className="flex flex-none gap-16 pr-16"
+          className="flex flex-none gap-20 pr-20 items-center grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
         >
           {[...new Array(2)].fill(0).map((_, index) => (
             <React.Fragment key={index}>
@@ -37,10 +37,10 @@ export const InfiniteScrollingLogosAnimation = () => {
                 <Image
                   key={alt}
                   src={src}
-                  width={200}
-                  height={200}
+                  width={150}
+                  height={50}
                   alt={alt}
-                  className="h-16 w-auto flex-none"
+                  className="h-12 w-auto flex-none object-contain"
                 />
               ))}
             </React.Fragment>

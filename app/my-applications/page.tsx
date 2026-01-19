@@ -78,64 +78,50 @@ export default function MyApplicationsPage() {
     return router.push("/sign-in");
   }
   return (
-    <div className="container mx-auto px-6 py-10">
-      <div className="flex flex-col gap-10">
-        {/* Header Section */}
-        <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold tracking-tight">My Applications</h1>
-          <p className="text-muted-foreground text-lg">
-            Track and manage your job applications effortlessly.
-          </p>
-        </div>
-
-        {/* Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <StatCard
-            title="Total Applications"
-            value={totalApplications.toString()}
-            change="+3 this week"
-            icon={<TrendingUpIcon className="h-6 w-6 text-green-500" />}
-          />
-          <StatCard
-            title="Pending"
-            value={inProgress.toString()}
-            change="+1 this week"
-            icon={<ClockIcon className="h-6 w-6 text-blue-500" />}
-          />
-          <StatCard
-            title="Accepted"
-            value={accepted.toString()}
-            change="No change"
-            icon={<CalendarCheckIcon className="h-6 w-6 text-purple-500" />}
-          />
-        </div>
-
-        {/* Applications Table */}
-        <Card className="shadow-md rounded-2xl border border-gray-200 dark:border-neutral-900">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-xl font-semibold">
-              Recent Applications
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="rounded-xl overflow-hidden">
-              <UserApplicationsTable applications={applications || []} />
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Empty State (Optional) */}
-        {/* 
-        <div className="flex flex-col items-center justify-center py-16 gap-6">
-          <FolderOpenIcon className="h-14 w-14 text-gray-300" />
-          <h3 className="text-xl font-semibold">No applications yet</h3>
-          <p className="text-muted-foreground text-center max-w-sm">
-            You haven't applied to any jobs yet. Start your journey by exploring new opportunities.
-          </p>
-          <Button className="mt-4">Browse Jobs</Button>
-        </div> 
-        */}
+    <div className="w-full max-w-7xl mx-auto space-y-12 pb-20 animate-in fade-in duration-500">
+      <div className="flex flex-col gap-4 border-b border-gray-200 dark:border-zinc-800 pb-8">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">My Applications</h1>
+        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl">
+          Track and manage your job applications effortlessly. Keep an eye on your progress and next steps.
+        </p>
       </div>
+
+      {/* Stats Section */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StatCard
+          title="Total Applications"
+          value={totalApplications.toString()}
+          change="+3 this week"
+          icon={<TrendingUpIcon className="h-6 w-6 text-green-500" />}
+        />
+        <StatCard
+          title="Pending"
+          value={inProgress.toString()}
+          change="+1 this week"
+          icon={<ClockIcon className="h-6 w-6 text-blue-500" />}
+        />
+        <StatCard
+          title="Accepted"
+          value={accepted.toString()}
+          change="No change"
+          icon={<CalendarCheckIcon className="h-6 w-6 text-purple-500" />}
+        />
+      </div>
+
+      {/* Applications Table */}
+      <Card className="shadow-xl shadow-gray-200/50 dark:shadow-black/20 rounded-3xl border border-gray-100 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/50 backdrop-blur-sm overflow-hidden">
+        <CardHeader className="p-8 border-b border-gray-100 dark:border-zinc-800 bg-gray-50/50 dark:bg-zinc-900/50">
+          <CardTitle className="text-xl font-bold flex items-center gap-2">
+            <div className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+            Recent Applications
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-0">
+          <div className="overflow-x-auto">
+            <UserApplicationsTable applications={applications || []} />
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
@@ -153,18 +139,20 @@ function StatCard({
   icon: React.ReactNode;
 }) {
   return (
-    <Card className="hover:shadow-lg transition-shadow duration-300 rounded-2xl border border-gray-200 dark:border-neutral-900">
+    <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-2xl border border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 backdrop-blur-sm group">
       <CardContent className="p-6 flex flex-col gap-4">
         <div className="flex items-center gap-4">
-          <div className="flex items-center justify-center h-10 w-10 bg-muted rounded-full">
+          <div className="flex items-center justify-center h-12 w-12 bg-blue-50 dark:bg-blue-900/10 rounded-xl group-hover:scale-110 transition-transform duration-300">
             {icon}
           </div>
           <div>
-            <p className="text-sm text-muted-foreground font-medium">{title}</p>
-            <h3 className="text-2xl font-bold">{value}</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-1">{title}</p>
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">{value}</h3>
           </div>
         </div>
-        <p className="text-xs text-muted-foreground">{change}</p>
+        <div className="flex items-center gap-2 text-xs font-medium text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/10 w-fit px-2 py-1 rounded-full">
+          <span>{change}</span>
+        </div>
       </CardContent>
     </Card>
   );

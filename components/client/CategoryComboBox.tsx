@@ -29,9 +29,19 @@ const jobCategories = [
   { value: "cybersecurity", label: "Cybersecurity" },
 ];
 
-export function CategoryComboBox() {
+interface CategoryComboBoxProps {
+  field: any; // Using any to bypass strict type checking for now, or use ControllerRenderProps
+  className?: string; // Add className prop
+}
+
+export function CategoryComboBox({ field, className }: CategoryComboBoxProps) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState(field.value || "");
+
+  // Sync internal state with field value
+  React.useEffect(() => {
+    setValue(field.value || "");
+  }, [field.value]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -40,7 +50,7 @@ export function CategoryComboBox() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className={cn("w-[200px] justify-between", className)} // Merge classNames
         >
           {value
             ? jobCategories.find((category) => category.value === value)?.label
@@ -59,7 +69,9 @@ export function CategoryComboBox() {
                   key={category.value}
                   value={category.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                    const newValue = currentValue === value ? "" : currentValue;
+                    setValue(newValue);
+                    field.onChange(newValue); // Update form field
                     setOpen(false);
                   }}
                 >

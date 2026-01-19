@@ -54,51 +54,52 @@ const JobCard = ({ job }: { job: IJob }) => {
   }, [job._id, isSignedIn, getToken]);
 
   return (
-    <div className="flex flex-col  gap-2 p-2 sm:p-6 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-900 rounded-md shadow-2xl dark:shadow-none shadow-gray-200">
-      <Image
-        src={job.companyId?.iconUrl || "/globe.svg"}
-        width={32}
-        height={32}
-        alt="company-image "
-        className="w-20 h-20 bg-white dark:p-2"
-      />
-      <h1 className="font-semibold text-lg">{job.title}</h1>
-      <div className="flex max-sm:w-fit  sm:items-center gap-2 text-xs ">
-        <div className=" max-sm:w-fit  px-2 sm:px-6 py-2 bg-blue-100 border border-blue-200 rounded-sm text-black text-xs">
-          {job.location}
+    <div className="group flex flex-col gap-4 p-5 bg-white dark:bg-neutral-900/50 dark:backdrop-blur-md border border-gray-100 dark:border-neutral-800 rounded-xl hover:shadow-xl hover:border-blue-500/20 hover:-translate-y-1 transition-all duration-300">
+      <div className="flex items-start justify-between">
+        <div className="h-14 w-14 rounded-xl overflow-hidden bg-gray-50 dark:bg-neutral-800 border border-gray-100 dark:border-neutral-700 p-2 flex items-center justify-center">
+          <Image
+            src={job.companyId?.iconUrl || "/globe.svg"}
+            width={40}
+            height={40}
+            alt="company-image"
+            className="object-contain w-full h-full"
+          />
         </div>
-        <div className=" max-sm:w-fit  px-2 sm:px-6 py-2 bg-red-100 border border-red-200 rounded-sm text-black text-xs">
-          {job.level}
-        </div>
+        {(hasApplied) && (
+          <span className="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[10px] font-bold uppercase rounded-full">Applied</span>
+        )}
       </div>
-      <p className="text-xs pt-4 text-gray-500  dark:text-white gap-2 h-20 overflow-auto">
+
+      <div>
+        <h1 className="font-bold text-lg text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">{job.title}</h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-1">{job.companyId?.name || "Unknown Company"}</p>
+      </div>
+
+      <div className="flex flex-wrap gap-2 text-xs font-medium">
+        <span className="px-2.5 py-1 bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400 rounded-md border border-blue-100 dark:border-blue-500/20">
+          {job.location}
+        </span>
+        <span className="px-2.5 py-1 bg-purple-50 text-purple-700 dark:bg-purple-500/10 dark:text-purple-400 rounded-md border border-purple-100 dark:border-purple-500/20">
+          {job.level}
+        </span>
+      </div>
+
+      <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 h-10 leading-relaxed">
         {job.description}
       </p>
-      <div className="flex items-center gap-4">
-        {/* <Button
-          className="bg-blue-600 cursor-pointer hover:bg-blue-400 text-white rounded-md text-xs disabled:bg-blue-300"
-          disabled={hasApplied}
-          // onClick={handleApplyButton} disabled={hasApplied}
-        >
-          <Link href={`/job/${job._id}`}>
-            {" "}
-            {hasApplied ? "Applied" : "Apply"}
-          </Link>
-        </Button>
-        <Button className="bg-transparent hover:bg-gray-300 dark:hover:bg-neutral-800 cursor-pointer text-gray-600 dark:text-white border border-gray-200 dark:border-neutral-900 rounded-md text-xs ">
-          <Link href={`/job/${job._id}`}>Learn More</Link>
-        </Button> */}
-        <Link href={`/job/${job._id}`} passHref>
+
+      <div className="flex items-center gap-3 pt-2 mt-auto">
+        <Link href={`/job/${job._id}`} passHref className="flex-1">
           <Button
-            className="bg-blue-600 cursor-pointer hover:bg-blue-400 text-white rounded-md text-xs disabled:bg-blue-300"
-            disabled={hasApplied} // Or isLoadingStatus if you added that
+            className="w-full bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium shadow-sm shadow-blue-500/20 disabled:opacity-70 disabled:cursor-not-allowed"
+            disabled={hasApplied}
           >
-            {hasApplied ? "Applied" : "Apply"}
+            {hasApplied ? "Applied" : "Apply Now"}
           </Button>
         </Link>
         <Link href={`/job/${job._id}`} passHref>
-          <Button className="bg-transparent hover:bg-gray-300 dark:hover:bg-neutral-800 cursor-pointer text-gray-600 dark:text-white border border-gray-200 dark:border-neutral-900 rounded-md text-xs ">
-            Learn More
+          <Button variant="ghost" className="hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-600 dark:text-gray-300 rounded-lg text-sm font-medium border border-transparent hover:border-gray-200 dark:hover:border-neutral-700">
+            Details
           </Button>
         </Link>
       </div>

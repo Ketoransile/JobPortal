@@ -43,34 +43,41 @@ const Navbar = () => {
   }, [userId, getToken]);
 
   return (
-    <div className="z-10 top-0 sticky flex items-center justify-between py-4 px-4 lg:px-20 backdrop-blur-3xl bg-white dark:bg-black dark:border-b border-b-neutral-900 shadow-none">
-      <Link href="/" className="flex items-center gap-2">
-        <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-black dark:text-white">
-          <span className=" ">Next</span>
-          Jobs
+    <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between py-3 px-6 lg:px-8 rounded-full border border-white/20 dark:border-white/5 bg-white/70 dark:bg-zinc-900/40 backdrop-blur-2xl shadow-xl dark:shadow-2xl dark:shadow-black/20 w-[90%] md:w-[85%] lg:w-[75%] max-w-5xl transition-all duration-300 hover:bg-white/80 dark:hover:bg-zinc-900/60">
+      <Link href="/" className="flex items-center gap-2 group">
+        <div className="p-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300 shadow-lg shadow-blue-500/20">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-5 h-5 text-white"
+          >
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+          </svg>
+        </div>
+        <h1 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          Next<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">Jobs</span>
         </h1>
       </Link>
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-4">
         <SignedOut>
-          {/* <Link href="/recruiter/sign-up" className="">
-            <Button className="p-2 rounded-md bg-transparent border border-gray-300 dark:border-neutral-900 dark:hover:bg-neutral-900 text-gray-500 dark:text-white hover:bg-gray-300 cursor-pointer">
-              Recruiters
-            </Button>
-          </Link> */}
           <Link href="/sign-in" className="">
-            <Button className="bg-blue-600 dark:text-white hover:bg-blue-400 rounded-md px-6 cursor-pointer">
+            <Button className="bg-blue-600 text-white hover:bg-blue-500 rounded-full px-6 shadow-md shadow-blue-500/20 transition-all hover:scale-105 active:scale-95">
               Login
             </Button>
           </Link>
         </SignedOut>
         <SignedIn>
           <div className="flex items-center gap-4">
-            {/* <h1 className="hidden lg:flex text-base text-center  ">
-              Hi, {user?.firstName}
-            </h1> */}
             <UserButtonComponent userRole={userRole} />
           </div>
         </SignedIn>
+        <div className="hidden md:block w-px h-6 bg-gray-200 dark:bg-white/10"></div>
         <ThemeToggle />
       </div>
     </div>

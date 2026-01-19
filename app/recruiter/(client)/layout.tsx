@@ -62,71 +62,51 @@ export default function DashboardLayout({
     fetchUserData();
   }, [router, getToken]);
   return (
-    <html lang="en">
-      <body>
-        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-6 items-start pt-10 lg:-mx-20  ">
-          <div className="lg:min-h-screen lg:col-span-1 flex lg:flex-col max-lg:border max-lg:border-gray-300  lg:border-r border-r-gray-300 dark:border-r-neutral-800 text-sm">
-            {pathname === "/recruiter/dashboard/add-jobs" ? (
-              <Link
-                href="/recruiter/dashboard/add-jobs"
-                className="flex items-center gap-2 bg-blue-100 dark:bg-muted p-4 border-r-4 border-blue-600
-            "
-              >
-                <MdOutlineAddToPhotos size={20} />
-                <h1>Add Job</h1>
-              </Link>
-            ) : (
-              <Link
-                href="/recruiter/dashboard/add-jobs"
-                className="flex items-center gap-2 p-4"
-              >
-                {" "}
-                <MdOutlineAddToPhotos size={20} />
-                <h1>Add Job</h1>
-              </Link>
-            )}
-            {pathname === "/recruiter/dashboard/manage-jobs" ? (
-              <Link
-                href="/recruiter/dashboard/manage-jobs"
-                className="flex items-center gap-2 bg-blue-100 dark:bg-muted p-4 border-r-4 border-blue-600
-            "
-              >
-                <MdManageAccounts size={20} />
-                <h1>Manage Jobs</h1>
-              </Link>
-            ) : (
-              <Link
-                href="/recruiter/dashboard//manage-jobs"
-                className="flex items-center gap-2 p-4"
-              >
-                {" "}
-                <MdManageAccounts size={20} />
-                <h1>Manage Jobs</h1>
-              </Link>
-            )}
-            {pathname === "/recruiter/dashboard/view-applications" ? (
-              <Link
-                href="/recruiter/dashboard/view-applications"
-                className="flex items-center gap-2 bg-blue-100 dark:bg-muted p-4 border-r-4 border-blue-600
-            "
-              >
-                <VscGitStashApply size={20} />
-                <h1>View Applications</h1>
-              </Link>
-            ) : (
-              <Link
-                href="/recruiter/dashboard/view-applications"
-                className="flex items-center gap-2 p-4
-              "
-              >
-                <VscGitStashApply size={20} />
-                <h1>View Applications</h1>
-              </Link>
-            )}
-          </div>
-          <main className="lg:col-span-5">{children}</main>
-        </div>
-      </body>
-    </html>
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white dark:bg-zinc-950 pt-10">
+      <aside className="lg:w-64 shrink-0 flex flex-row lg:flex-col lg:border-r border-gray-100 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm lg:min-h-[calc(100vh-80px)] sticky top-24 z-30 overflow-x-auto lg:overflow-visible">
+        <nav className="flex lg:flex-col gap-1 p-4 w-full">
+          <NavLink
+            href="/recruiter/dashboard/add-jobs"
+            active={pathname === "/recruiter/dashboard/add-jobs"}
+            icon={<MdOutlineAddToPhotos size={20} />}
+            label="Add Job"
+          />
+          <NavLink
+            href="/recruiter/dashboard/manage-jobs"
+            active={pathname === "/recruiter/dashboard/manage-jobs"}
+            icon={<MdManageAccounts size={20} />}
+            label="Manage Jobs"
+          />
+          <NavLink
+            href="/recruiter/dashboard/view-applications"
+            active={pathname === "/recruiter/dashboard/view-applications"}
+            icon={<VscGitStashApply size={20} />}
+            label="View Applications"
+          />
+        </nav>
+      </aside>
+      <main className="flex-1 p-6 lg:p-10 animate-in fade-in duration-500">
+        {children}
+      </main>
+    </div>
+  );
+}
+
+function NavLink({ href, active, icon, label }: { href: string; active: boolean; icon: React.ReactNode; label: string }) {
+  return (
+    <Link
+      href={href}
+      className={`
+        flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 whitespace-nowrap
+        ${active
+          ? "bg-blue-600 text-white shadow-lg shadow-blue-500/25 font-medium"
+          : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white"
+        }
+      `}
+    >
+      {icon}
+      <span>{label}</span>
+      {active && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-white/50 lg:block hidden" />}
+    </Link>
   );
 }

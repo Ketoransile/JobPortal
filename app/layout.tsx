@@ -36,7 +36,7 @@ export default function RootLayout({
         >
           <ThemeProvider attribute="class" enableSystem defaultTheme="system">
             <Navbar />
-            <div className="px-4 md:px-12 lg:px-20">
+            <div className="relative min-h-screen pt-28 px-4 md:px-12 lg:px-20">
               {children}
               <Toaster />
             </div>

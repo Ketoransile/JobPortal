@@ -50,9 +50,18 @@ const locations = [
   },
 ];
 
-export function LocationComboBox() {
+interface LocationComboBoxProps {
+  field: any;
+  className?: string;
+}
+
+export function LocationComboBox({ field, className }: LocationComboBoxProps) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState(field.value || "");
+
+  React.useEffect(() => {
+    setValue(field.value || "");
+  }, [field.value]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -61,7 +70,7 @@ export function LocationComboBox() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className={cn("w-[200px] justify-between", className)}
         >
           {value
             ? locations.find((location) => location.value === value)?.label
@@ -80,7 +89,9 @@ export function LocationComboBox() {
                   key={location.value}
                   value={location.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                    const newValue = currentValue === value ? "" : currentValue;
+                    setValue(newValue);
+                    field.onChange(newValue);
                     setOpen(false);
                   }}
                 >
