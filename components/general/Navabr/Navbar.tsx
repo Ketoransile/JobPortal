@@ -68,7 +68,7 @@ const Navbar = () => {
             {/* <h1 className="hidden lg:flex text-base text-center  ">
               Hi, {user?.firstName}
             </h1> */}
-            {userRole && <UserButtonComponent userRole={userRole} />}
+            <UserButtonComponent userRole={userRole} />
           </div>
         </SignedIn>
         <ThemeToggle />

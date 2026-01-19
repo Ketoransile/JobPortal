@@ -26,7 +26,7 @@ export const fetchJobs = async (
       credentials: "include",
       cache: "no-store",
     });
-    // console.log("response from fetchjobs", response);
+    console.log("response from fetchjobs", response);
     // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({})); // In case it's not JSON

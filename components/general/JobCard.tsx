@@ -56,7 +56,7 @@ const JobCard = ({ job }: { job: IJob }) => {
   return (
     <div className="flex flex-col  gap-2 p-2 sm:p-6 dark:bg-neutral-900 border border-gray-200 dark:border-neutral-900 rounded-md shadow-2xl dark:shadow-none shadow-gray-200">
       <Image
-        src={job.companyId.iconUrl}
+        src={job.companyId?.iconUrl || "/globe.svg"}
         width={32}
         height={32}
         alt="company-image "

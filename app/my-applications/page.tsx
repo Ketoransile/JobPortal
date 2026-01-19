@@ -1,5 +1,5 @@
 "use client";
-import { UserApplicationsTable } from "@/components/general/users/UserApplicationsTable";
+import { UserApplicationsTable, ApplicationType } from "@/components/general/users/UserApplicationsTable";
 // import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useAuth } from "@clerk/nextjs";
@@ -11,7 +11,7 @@ export default function MyApplicationsPage() {
   const { isSignedIn, getToken } = useAuth();
 
   const router = useRouter();
-  const [applications, setApplications] = useState([]);
+  const [applications, setApplications] = useState<ApplicationType[]>([]);
   useEffect(() => {
     async function fetchUserData() {
       const baseUrl =
@@ -119,7 +119,7 @@ export default function MyApplicationsPage() {
           </CardHeader>
           <CardContent>
             <div className="rounded-xl overflow-hidden">
-              <UserApplicationsTable applications={applications} />
+              <UserApplicationsTable applications={applications || []} />
             </div>
           </CardContent>
         </Card>
