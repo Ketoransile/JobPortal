@@ -13,7 +13,7 @@ export function GridBackground() {
             <div className="absolute inset-0 bg-transparent dark:bg-transparent [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
             {/* Ambient glow */}
-            <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-blue-500 opacity-20 blur-[100px]"></div>
+            <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[200px] w-[200px] md:h-[350px] md:w-[350px] rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.4)_0%,transparent_70%)] dark:bg-[radial-gradient(circle,rgba(59,130,246,0.2)_0%,transparent_70%)] blur-[60px] md:blur-[100px]"></div>
         </div>
     );
 }
