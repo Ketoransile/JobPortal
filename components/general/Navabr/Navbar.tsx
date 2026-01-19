@@ -43,7 +43,7 @@ const Navbar = () => {
   }, [userId, getToken]);
 
   return (
-    <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between py-3 px-6 lg:px-8 rounded-full border border-white/20 dark:border-white/5 bg-white/70 dark:bg-zinc-900/40 backdrop-blur-2xl shadow-none md:shadow-xl dark:md:shadow-2xl dark:md:shadow-black/20 w-[90%] md:w-[85%] lg:w-[75%] max-w-5xl transition-all duration-300 hover:bg-white/80 dark:hover:bg-zinc-900/60">
+    <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between py-3 px-6 lg:px-8 rounded-full border border-white/20 dark:border-white/5 bg-white/95 dark:bg-zinc-900/95 md:bg-white/70 md:dark:bg-zinc-900/40 backdrop-blur-2xl shadow-none md:shadow-xl dark:md:shadow-2xl dark:md:shadow-black/20 w-[90%] md:w-[85%] lg:w-[75%] max-w-5xl transition-all duration-300 hover:bg-white/100 dark:hover:bg-zinc-900/100 md:hover:bg-white/80 md:dark:hover:bg-zinc-900/60">
       <Link href="/" className="flex items-center gap-2 group">
         <div className="p-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300 shadow-lg shadow-blue-500/20">
           <svg
