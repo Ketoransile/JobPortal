@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useRouter } from "next/navigation";
+
 import { useAuth } from "@clerk/nextjs";
 import { toast } from "sonner"; // Assuming you have sonner or similar
 import { useState } from "react";
@@ -30,7 +30,7 @@ const formSchema = z.object({
 });
 
 export default function OnboardingPage() {
-    const router = useRouter();
+
     const { getToken } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -70,9 +70,13 @@ export default function OnboardingPage() {
             // For now, redirect to dashboard
             // Force a window reload to ensure Clerk/User session updates the role
             window.location.href = "/recruiter/dashboard/add-jobs";
-        } catch (error: any) {
+        } catch (error) {
             console.error(error);
-            toast.error(error.message || "Something went wrong.");
+            let errorMessage = "Something went wrong.";
+            if (error instanceof Error) {
+                errorMessage = error.message;
+            }
+            toast.error(errorMessage);
         } finally {
             setIsLoading(false);
         }

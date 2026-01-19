@@ -32,7 +32,9 @@ const Hero = () => {
         </p>
 
         <div className="w-full mt-4 p-2">
-          <SearchFilter />
+          <React.Suspense fallback={<div className="h-14 w-full bg-white/20 rounded-full animate-pulse" />}>
+            <SearchFilter />
+          </React.Suspense>
         </div>
       </motion.div>
     </section>

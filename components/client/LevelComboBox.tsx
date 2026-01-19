@@ -35,7 +35,10 @@ const experienceLevels = [
 ];
 
 interface LevelComboBoxProps {
-  field: any;
+  field: {
+    value?: string;
+    onChange: (value: string) => void;
+  };
   className?: string; // Add className
 }
 

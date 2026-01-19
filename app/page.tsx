@@ -6,6 +6,8 @@ import { JobListLoading } from "@/components/general/JobListLoading";
 import TrustedBy from "@/components/general/TrustedBy";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <main className="min-h-screen relative selection:bg-blue-500/30">

@@ -30,7 +30,10 @@ const jobCategories = [
 ];
 
 interface CategoryComboBoxProps {
-  field: any; // Using any to bypass strict type checking for now, or use ControllerRenderProps
+  field: {
+    value?: string;
+    onChange: (value: string) => void;
+  };
   className?: string; // Add className prop
 }
 

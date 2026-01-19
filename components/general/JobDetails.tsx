@@ -64,7 +64,7 @@ export const JobDetails = ({ job, jobListings, jobId }: { job: IJob, jobListings
         <div className="flex flex-row md:flex-col gap-3 items-center w-full md:w-auto shrink-0">
           <Button
             className="w-full md:w-48 h-12 bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-lg shadow-blue-500/25 transition-all hover:scale-105 active:scale-95"
-            onClick={() => router.push(`/job/${jobId}/apply`)}
+            onClick={handleApplyJob}
           >
             Apply Now
           </Button>
@@ -127,7 +127,7 @@ export const JobDetails = ({ job, jobListings, jobId }: { job: IJob, jobListings
               </p>
               <Button
                 className="w-full h-11 bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-md transition-all"
-                onClick={() => router.push(`/job/${jobId}/apply`)}
+                onClick={handleApplyJob}
               >
                 Apply Now
               </Button>

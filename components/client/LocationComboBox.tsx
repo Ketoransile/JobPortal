@@ -51,7 +51,10 @@ const locations = [
 ];
 
 interface LocationComboBoxProps {
-  field: any;
+  field: {
+    value?: string;
+    onChange: (value: string) => void;
+  };
   className?: string;
 }
 
