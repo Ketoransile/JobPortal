@@ -64,15 +64,23 @@ export default async function JobsPage(props: {
 
       <div className="flex flex-col gap-10">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {jobListings.length > 0
-            ? jobListings.map((job: IJob, index: number) => (
+          {response.error ? (
+            <div className="col-span-full flex flex-col items-center justify-center py-20 text-center bg-red-50/50 dark:bg-red-900/10 rounded-2xl border border-red-100 dark:border-red-900/30">
+              <h3 className="text-xl font-semibold text-red-600 dark:text-red-400 mb-2">Failed to load jobs</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto">
+                We're having trouble connecting to our database. Please try again later or check your connection.
+              </p>
+            </div>
+          ) : jobListings.length > 0 ? (
+            jobListings.map((job: IJob, index: number) => (
               <JobCard job={job} key={index} />
             ))
-            : (
-              <div className="col-span-full flex flex-col items-center justify-center py-20 text-center text-gray-500">
-                <p className="text-xl">No jobs found matching your criteria.</p>
-              </div>
-            )}
+          ) : (
+            <div className="col-span-full flex flex-col items-center justify-center py-20 text-center text-gray-500 bg-gray-50 dark:bg-zinc-900/30 rounded-2xl border border-gray-100 dark:border-zinc-800">
+              <p className="text-xl font-medium mb-2">No jobs available</p>
+              <p className="text-sm">It looks like there are no job listings matching your criteria at the moment. Please check back later!</p>
+            </div>
+          )}
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 border-t border-gray-100 dark:border-zinc-800 pt-8">
           <JobsPerPage />
