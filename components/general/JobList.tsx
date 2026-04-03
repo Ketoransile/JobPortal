@@ -37,18 +37,35 @@ const JobList = async () => {
             </div>
           </div>
 
-          <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {jobListings.length > 0 &&
-              jobListings
-                .slice(0, 8)
-                .map((job: IJob, index: number) => (
-                  <JobCard job={job} key={index} />
-                ))}
-          </div>
+          {response.error ? (
+            <div className="flex flex-col items-center justify-center py-12 text-center col-span-full bg-red-50/50 dark:bg-red-900/10 rounded-2xl border border-red-100 dark:border-red-900/30 w-full">
+              <h3 className="text-xl font-semibold text-red-600 dark:text-red-400 mb-2">Failed to load jobs</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm max-w-md mx-auto">
+                We're having trouble connecting to our database. Please try again later or check your connection.
+              </p>
+            </div>
+          ) : jobListings.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-12 text-center col-span-full bg-gray-50 dark:bg-zinc-900/30 rounded-2xl border border-gray-100 dark:border-zinc-800 w-full">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">No jobs available</h3>
+              <p className="text-gray-500 dark:text-gray-400 text-sm max-w-md mx-auto">
+                It looks like there are no job listings at the moment. Please check back later!
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="hidden md:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
+                {jobListings
+                  .slice(0, 8)
+                  .map((job: IJob, index: number) => (
+                    <JobCard job={job} key={index} />
+                  ))}
+              </div>
 
-          <div className="md:hidden">
-            <MobileScreenJobsCarousel jobListings={jobListings} />
-          </div>
+              <div className="md:hidden w-full">
+                <MobileScreenJobsCarousel jobListings={jobListings} />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>
