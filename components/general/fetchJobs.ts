@@ -36,17 +36,16 @@ export const fetchJobs = async (
           `Failed to fetch jobs. Status: ${response.status}`,
         jobs: [],
         totalPages: 0,
+        error: true,
       };
     }
 
     const data = await response.json();
-    // console.log("data from fetchjobs", data);
-    // console.log("dat.data frmo fechjobs", data.data);
-    // if()
     return {
       message: "jobs are successully fetched",
       jobs: data?.data || [],
       totalPages: data?.totalPages || 0,
+      error: false,
     };
   } catch (error) {
     console.error("Fetch error:", error);
@@ -54,6 +53,7 @@ export const fetchJobs = async (
       message: "internal server error while fetching jobs",
       jobs: [],
       totalPages: 0,
+      error: true,
     };
   }
 };
